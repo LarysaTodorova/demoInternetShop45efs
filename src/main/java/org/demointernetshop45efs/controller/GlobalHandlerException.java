@@ -17,19 +17,19 @@ import java.util.Map;
 public class GlobalHandlerException {
 
     @ExceptionHandler(NullPointerException.class)
-    public ResponseEntity<String> handlerNullPointerException(NullPointerException e){
+    public ResponseEntity<String> handlerNullPointerException(NullPointerException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<String> handlerNotFoundException(NotFoundException e){
+    public ResponseEntity<String> handlerNotFoundException(NotFoundException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(AlreadyExistException.class)
-    public ResponseEntity<Map<String, String>> handlerAlreadyExistException(AlreadyExistException e){
+    public ResponseEntity<Map<String, String>> handlerAlreadyExistException(AlreadyExistException e) {
         Map<String, String> errorResponse = new HashMap<>();
-        errorResponse.put("error",e.getMessage());
+        errorResponse.put("error", e.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 
@@ -47,11 +47,7 @@ public class GlobalHandlerException {
     }
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity<String> handlerSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e){
+    public ResponseEntity<String> handlerSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
-
-
-
-
 }

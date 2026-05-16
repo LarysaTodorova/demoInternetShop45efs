@@ -20,15 +20,12 @@ public class CodeConfirmationController {
 
 
     @GetMapping("/renew")
-    public boolean codeRenew(@RequestParam String email){
+    public boolean codeRenew(@RequestParam String email) {
         return userService.renewCode(email);
-    };
-
-
-    @GetMapping("/confirmation")
-    public ResponseEntity<UserResponseDto> confirmationEmail(@RequestParam String codeConfirmation){
-        return new ResponseEntity<>(userService.confirmationEmail(codeConfirmation), HttpStatus.OK);
     }
 
-
+    @GetMapping("/confirmation")
+    public ResponseEntity<UserResponseDto> confirmationEmail(@RequestParam String codeConfirmation) {
+        return new ResponseEntity<>(userService.confirmationEmail(codeConfirmation), HttpStatus.OK);
+    }
 }

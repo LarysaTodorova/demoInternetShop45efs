@@ -23,35 +23,35 @@ public class UserController {
 
     //*  добавить нового пользователя
     @PostMapping("/new")
-    public ResponseEntity<UserResponseDto> addNewUser(@RequestBody UserRequestDto request){
+    public ResponseEntity<UserResponseDto> addNewUser(@RequestBody UserRequestDto request) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(service.registration(request));
-    };
+    }
 
     //* найти всех пользователей (полная информация - для ADMIN)
     @GetMapping("/full")
-    public ResponseEntity<List<User>> findAllFullDetails(){
+    public ResponseEntity<List<User>> findAllFullDetails() {
         return ResponseEntity.ok(service.findFullDetailUsers());
-    };
+    }
 
     //* найти всех пользователей (ограниченная информация - для MANAGER)
     @GetMapping("/manager/all")
-    public ResponseEntity<List<UserResponseDto>> findAll(){
+    public ResponseEntity<List<UserResponseDto>> findAll() {
         return ResponseEntity.ok(service.findAllUsers());
-    };
+    }
 
     //*найти пользователя по ID
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> findUserById(@PathVariable Integer id){
+    public ResponseEntity<UserResponseDto> findUserById(@PathVariable Integer id) {
         return ResponseEntity.ok(service.findUserById(id));
-    };
+    }
 
     //*найти пользователя по email
     @GetMapping()
-    public ResponseEntity<UserResponseDto> findUserByEmail(@RequestParam String email){
+    public ResponseEntity<UserResponseDto> findUserByEmail(@RequestParam String email) {
         return ResponseEntity.ok(service.findUserByEmail(email));
-    };
+    }
 
     // найти всех по имени
 //    @GetMapping("/name")
@@ -62,18 +62,15 @@ public class UserController {
     // * обновить данные от имени пользователь (пользователь хочет
     // поменять какие-то данные в своем профиле)
     @PutMapping("/update")
-    public ResponseEntity<UserResponseDto> updateUser(@RequestBody UserUpdateRequestDto request){
+    public ResponseEntity<UserResponseDto> updateUser(@RequestBody UserUpdateRequestDto request) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(service.updateUser(request));
-    };
-
+    }
 
     //* удаление записи
     @DeleteMapping("/{id}")
-    public boolean deleteUser(@PathVariable Integer id){
+    public boolean deleteUser(@PathVariable Integer id) {
         return service.deleteUser(id);
-    };
-
-
+    }
 }
